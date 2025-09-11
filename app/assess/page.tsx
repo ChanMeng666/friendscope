@@ -12,6 +12,7 @@ import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { LottieAnimation } from '@/components/LottieAnimation';
+import GEOHead from '@/components/GEOHead';
 
 // 添加烟花动画组件
 const FireworkAnimation = ({ show }: { show: boolean }) => (
@@ -150,7 +151,9 @@ export default function AssessmentPage() {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-4xl md:max-w-5xl relative">
+        <>
+            <GEOHead pageType="assessment" />
+            <div className="container mx-auto px-4 py-8 max-w-4xl md:max-w-5xl relative">
             {/* Interactive Star Animation */}
             <div className="absolute -left-32 top-1/5 w-64 h-64 z-10 opacity-90 pointer-events-none">
                 <LottieAnimation
@@ -247,5 +250,6 @@ export default function AssessmentPage() {
                 </Card>
             </motion.div>
         </div>
+        </>
     );
 }

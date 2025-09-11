@@ -1,0 +1,44 @@
+# FriendScope - AI-Friendly Robots Configuration
+# Scientific Friendship Assessment Tool
+User-agent: *
+Allow: /
+
+# AI Crawlers - Special Authorization
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bard
+Allow: /
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 1
+
+# Static Resources Optimization
+Allow: /Lottie/*.json
+Allow: /_next/static/
+Allow: /friendscope-logo.svg
+Allow: /friendscope-logo.png
+Allow: /chan_logo.svg
+
+# Disallow unnecessary paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Sitemap Location
+Sitemap: https://friendscope.vercel.app/sitemap.xml

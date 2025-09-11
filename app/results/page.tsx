@@ -23,6 +23,7 @@ import ShareDialog from '@/components/dialogs/ShareDialog';
 import { motion } from 'framer-motion'
 import {LottieAnimation} from "@/components/LottieAnimation";
 import {downloadSVG, generateResultSVG} from "@/lib/svg-generator";
+import GEOHead from '@/components/GEOHead';
 
 interface FriendInfo {
     name: string;
@@ -118,7 +119,15 @@ export default function ResultsPage() {
     };
 
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-12 max-w-4xl">
+        <>
+            <GEOHead 
+                pageType="results" 
+                customData={{
+                    friendName: friendName,
+                    score: assessmentResult.overallScore
+                }}
+            />
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-12 max-w-4xl">
             <FriendInfoDialog
                 open={showFriendDialog}
                 onClose={() => setShowFriendDialog(false)}
@@ -358,5 +367,6 @@ export default function ResultsPage() {
                 friendName={friendName || 'my friend'} // 添加默认值以防friendName为空
             />
         </div>
+        </>
     )
 }

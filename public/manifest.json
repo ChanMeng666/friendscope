@@ -1,0 +1,77 @@
+{
+  "name": "FriendScope - Scientific Friendship Assessment Tool",
+  "short_name": "FriendScope",
+  "description": "Evidence-based friendship evaluation platform providing comprehensive relationship analysis with complete privacy protection",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": [
+    "lifestyle",
+    "health",
+    "education",
+    "social"
+  ],
+  "screenshots": [
+    {
+      "src": "/friendscope-logo.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/friendscope-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/friendscope-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Take Assessment",
+      "short_name": "Assess",
+      "description": "Start friendship evaluation",
+      "url": "/assess",
+      "icons": [
+        {
+          "src": "/friendscope-logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View History",
+      "short_name": "History",
+      "description": "See past assessments",
+      "url": "/history",
+      "icons": [
+        {
+          "src": "/friendscope-logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Get Resources",
+      "short_name": "Resources", 
+      "description": "Professional support and resources",
+      "url": "/resources",
+      "icons": [
+        {
+          "src": "/friendscope-logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

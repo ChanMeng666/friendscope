@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { LottieAnimation } from '@/components/LottieAnimation';
 import { motion } from 'framer-motion';
 import { ChevronRight, Sparkles, Brain, Heart, Trophy } from 'lucide-react';
+import GEOHead from '@/components/GEOHead';
 
 export default function Home() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -61,7 +62,9 @@ export default function Home() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
+        <>
+            <GEOHead pageType="home" />
+            <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
             {/* Hero Section */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 md:pt-10 md:pb-20">
                 <motion.div
@@ -312,5 +315,6 @@ export default function Home() {
                 </motion.div>
             </div>
         </div>
+        </>
     );
 }

@@ -16,6 +16,7 @@ import {
     ShieldCheck,
     Clock
 } from 'lucide-react';
+import GEOHead from '@/components/GEOHead';
 
 const resources = [
     {
@@ -97,7 +98,9 @@ const features = [
 
 export default function ResourcesPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
+        <>
+            <GEOHead pageType="resources" />
+            <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
             {/* Hero Section */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 md:pt-10 md:pb-20">
                 <motion.div
@@ -247,5 +250,6 @@ export default function ResourcesPage() {
                 </motion.div>
             </div>
         </div>
+        </>
     );
 }

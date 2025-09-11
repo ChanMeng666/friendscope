@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://friendscope.vercel.app/</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://friendscope.vercel.app/friendscope-logo.png</image:loc>
+            <image:title>FriendScope - Scientific Friendship Assessment Tool</image:title>
+            <image:caption>Evidence-based friendship evaluation platform with complete privacy protection</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Assessment Page -->
+    <url>
+        <loc>https://friendscope.vercel.app/assess</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Results Page -->
+    <url>
+        <loc>https://friendscope.vercel.app/results</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- About Page -->
+    <url>
+        <loc>https://friendscope.vercel.app/about</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Resources Page -->
+    <url>
+        <loc>https://friendscope.vercel.app/resources</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- History Page -->
+    <url>
+        <loc>https://friendscope.vercel.app/history</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+</urlset>

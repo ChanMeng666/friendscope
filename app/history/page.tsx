@@ -7,6 +7,7 @@ import { useHistoryStore } from '@/lib/history-store'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { LottieAnimation } from '@/components/LottieAnimation'
+import GEOHead from '@/components/GEOHead'
 import {
     Table,
     TableBody,
@@ -215,7 +216,9 @@ export default function HistoryPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
+        <>
+            <GEOHead pageType="history" />
+            <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-12">
                 {/* Header Section */}
                 <motion.div
@@ -679,5 +682,6 @@ export default function HistoryPage() {
                 </Dialog>
             </div>
         </div>
+        </>
     )
 }

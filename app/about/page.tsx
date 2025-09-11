@@ -14,6 +14,7 @@ import {
     Check,
     ExternalLink
 } from 'lucide-react'
+import GEOHead from '@/components/GEOHead'
 
 const features = [
     {
@@ -54,7 +55,9 @@ const benefits = [
 export default function AboutPage() {
 
     return (
-        <div className="relative min-h-screen bg-gradient-to-b from-background to-background/80">
+        <>
+            <GEOHead pageType="about" />
+            <div className="relative min-h-screen bg-gradient-to-b from-background to-background/80">
             {/* Hero Section */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 md:pt-10 md:pb-20">
                 <motion.div
@@ -248,5 +251,6 @@ export default function AboutPage() {
                 </motion.div>
             </div>
         </div>
+        </>
     )
 }
