@@ -1,6 +1,8 @@
 import { AssessmentConfig, AssessmentRegistry } from './types';
 import { friendshipConfig } from './friendship/config';
 import { familyConfig } from './family/config';
+import { workplaceConfig } from './workplace/config';
+import { romanticConfig } from './romantic/config';
 
 /**
  * 评测类型注册中心
@@ -9,8 +11,10 @@ import { familyConfig } from './family/config';
 const assessmentRegistry: AssessmentRegistry = {
     friendship: friendshipConfig,
     family: familyConfig,
+    workplace: workplaceConfig,
+    romantic: romanticConfig,
     // 其他评测类型可以继续添加
-    // workplace: workplaceConfig,
+    // mentor: mentorConfig,
 };
 
 /**

@@ -20,7 +20,8 @@ import {
     Info,
     History,
     HelpCircle,
-    ChevronRight
+    ChevronRight,
+    Trophy
 } from 'lucide-react'
 
 export function Header() {
@@ -39,6 +40,8 @@ export function Header() {
     const navigationItems = [
         { href: '/', label: 'Home', icon: Home },
         { href: '/about', label: 'About', icon: Info },
+        { href: '/dashboard', label: 'Dashboard', icon: ClipboardCheck },
+        { href: '/achievements', label: 'Achievements', icon: Trophy },
         { href: '/history', label: 'History', icon: History },
         { href: '/resources', label: 'Resources', icon: HelpCircle },
         { href: '/assess', label: 'Assessment', icon: ClipboardCheck },
