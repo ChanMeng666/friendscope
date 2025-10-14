@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/sheet"
 import {
     Menu,
-    Home,
     ClipboardCheck,
     Info,
     History,
@@ -38,7 +37,6 @@ export function Header() {
     }, [])
 
     const navigationItems = [
-        { href: '/', label: 'Home', icon: Home },
         { href: '/about', label: 'About', icon: Info },
         { href: '/dashboard', label: 'Dashboard', icon: ClipboardCheck },
         { href: '/achievements', label: 'Achievements', icon: Trophy },
