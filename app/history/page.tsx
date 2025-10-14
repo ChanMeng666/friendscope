@@ -6,8 +6,10 @@ import { useRouter } from 'next/navigation'
 import { useHistoryStore } from '@/lib/history-store'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { LottieAnimation } from '@/components/LottieAnimation'
 import GEOHead from '@/components/GEOHead'
+import { getAssessmentConfig, getAllAssessmentTypes } from '@/lib/assessments/registry'
 import {
     Table,
     TableBody,
@@ -157,18 +159,26 @@ const EmptyState = () => {
 
 export default function HistoryPage() {
     const router = useRouter()
-    const { assessments, removeAssessment, clearHistory } = useHistoryStore()
+    const { assessments, removeAssessment, clearHistory, getUniqueTypes } = useHistoryStore()
     const [showClearDialog, setShowClearDialog] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedView, setSelectedView] = useState<'table' | 'cards' | 'charts'>('cards')
     const [showDeleteDialog, setShowDeleteDialog] = useState(false)
     const [assessmentToDelete, setAssessmentToDelete] = useState<string | null>(null)
+    const [selectedType, setSelectedType] = useState<string>('all') // 类型筛选
 
-    // Filtered assessments based on search term
-    const filteredAssessments = assessments.filter(assessment =>
-        assessment.friendName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        assessment.assessment.message.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    // 获取所有可用的评测类型
+    const availableTypes = getAllAssessmentTypes();
+    const usedTypes = getUniqueTypes();
+
+    // Filtered assessments based on search term and type
+    const filteredAssessments = assessments.filter(assessment => {
+        const targetName = assessment.targetName || assessment.friendName || '';
+        const matchesSearch = targetName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            assessment.assessment.message.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesType = selectedType === 'all' || assessment.assessmentType === selectedType;
+        return matchesSearch && matchesType;
+    })
 
     // Prepare chart data
     const trendData = assessments
@@ -245,6 +255,31 @@ export default function HistoryPage() {
                                     className="pl-10"
                                 />
                             </div>
+                            {/* 类型筛选下拉菜单 */}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="outline" className="gap-2">
+                                        <Filter className="h-4 w-4" />
+                                        {selectedType === 'all' ? 'All Types' : availableTypes.find(t => t.type === selectedType)?.name || 'Type'}
+                                        <ChevronDown className="h-4 w-4" />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    <DropdownMenuItem onClick={() => setSelectedType('all')}>
+                                        All Types
+                                    </DropdownMenuItem>
+                                    {usedTypes.map(type => {
+                                        const config = getAssessmentConfig(type);
+                                        const Icon = config?.icon;
+                                        return (
+                                            <DropdownMenuItem key={type} onClick={() => setSelectedType(type)}>
+                                                {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                                {config?.name || type}
+                                            </DropdownMenuItem>
+                                        );
+                                    })}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline" className="gap-2">
@@ -372,23 +407,24 @@ export default function HistoryPage() {
                                     `}>
                                         <CardHeader>
                                             <div className="flex justify-between items-start">
-                                                <div>
-                                                    {/*<CardTitle className="text-xl">*/}
-                                                    <CardTitle className="
-                                                        text-xl
-                                                        bg-clip-text
-                                                        group-hover:text-transparent
-                                                        group-hover:bg-gradient-to-r
-                                                        group-hover:from-primary
-                                                        group-hover:to-purple-600
-                                                        transition-all
-                                                        duration-300
-                                                    ">
-                                                        {assessment.friendName}
-                                                    </CardTitle>
-                                                    {/*<CardDescription>*/}
-                                                    {/*    {format(new Date(assessment.date), 'PPP')}*/}
-                                                    {/*</CardDescription>*/}
+                                                <div className="flex-1">
+                                                    <div className="flex items-center gap-2 mb-1">
+                                                        <CardTitle className="
+                                                            text-xl
+                                                            bg-clip-text
+                                                            group-hover:text-transparent
+                                                            group-hover:bg-gradient-to-r
+                                                            group-hover:from-primary
+                                                            group-hover:to-purple-600
+                                                            transition-all
+                                                            duration-300
+                                                        ">
+                                                            {assessment.targetName || assessment.friendName}
+                                                        </CardTitle>
+                                                        <Badge variant="secondary" className="text-xs">
+                                                            {getAssessmentConfig(assessment.assessmentType || 'friendship')?.name || 'Assessment'}
+                                                        </Badge>
+                                                    </div>
                                                     <CardDescription className="
                                                         transition-colors
                                                         duration-300

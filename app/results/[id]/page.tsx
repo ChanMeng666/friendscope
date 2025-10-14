@@ -13,8 +13,11 @@ import { generatePDF, shareAssessment } from '@/lib/assessment-utils';
 import { motion} from 'framer-motion'
 import {LottieAnimation} from "@/components/LottieAnimation";
 import {downloadSVG, generateResultSVG} from "@/lib/svg-generator";
+import { getAssessmentConfig } from '@/lib/assessments/registry';
+import { AssessmentConfig } from '@/lib/assessments/types';
 
-const CATEGORY_DETAILS = {
+// 旧的硬编码类别详情（用于向后兼容，如果配置未找到）
+const FALLBACK_CATEGORY_DETAILS = {
     "Trust & Honesty": {
         description: "Measures the level of trust and honesty in your friendship",
         recommendations: {
@@ -224,19 +227,27 @@ export default function DetailedResultPage() {
     const { toast } = useToast()
     const { getAssessment, assessments } = useHistoryStore()
     const [assessment, setAssessment] = useState<AssessmentResult | undefined>()
+    const [config, setConfig] = useState<AssessmentConfig | undefined>()
 
     useEffect(() => {
         if (params.id) {
             const result = getAssessment(params.id as string)
             if (result) {
                 setAssessment(result)
+                // 加载评测配置
+                const assessmentConfig = getAssessmentConfig(result.assessmentType || 'friendship');
+                setConfig(assessmentConfig);
             } else {
                 router.push('/history')
             }
         }
     }, [params.id, getAssessment, router])
 
-    if (!assessment) return null
+    if (!assessment || !config) return null
+
+    // 获取目标名称（兼容旧数据）
+    const targetName = assessment.targetName || assessment.friendName || 'Unknown';
+    const targetLabel = config.targetEntity || 'Target';
 
 
 
@@ -264,7 +275,8 @@ export default function DetailedResultPage() {
     }
 
     const getRecommendations = (category: string, score: number) => {
-        const details = CATEGORY_DETAILS[category as keyof typeof CATEGORY_DETAILS]
+        // 从配置中获取类别详情
+        const details = config?.categoryDetails[category] || FALLBACK_CATEGORY_DETAILS[category as keyof typeof FALLBACK_CATEGORY_DETAILS];
         if (!details) return []
         if (score >= 80) return details.recommendations.high
         if (score >= 60) return details.recommendations.medium
@@ -476,11 +488,11 @@ export default function DetailedResultPage() {
                             {icon: Share2, label: 'Share', onClick: handleShare},
                             {icon: Download, label: 'Create SVG', onClick: () => {
                                     const svg = generateResultSVG(
-                                        assessment.friendName,
+                                        targetName,
                                         assessment.overallScore,
                                         assessment.categoryScores
                                     );
-                                    downloadSVG(svg, assessment.friendName);
+                                    downloadSVG(svg, targetName);
                                 }
                             },
                             {icon: Printer, label: 'Print', onClick: handlePrint},
@@ -512,7 +524,7 @@ export default function DetailedResultPage() {
                                 {/* 左侧信息 */}
                                 <div className="md:col-span-1">
                                     <h2 className="text-2xl font-bold mb-2">
-                                        Friendship Assessment Details
+                                        {config.name} Details
                                     </h2>
                                     <div className="space-y-4">
                                         <div>
@@ -525,9 +537,9 @@ export default function DetailedResultPage() {
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-medium text-muted-foreground">
-                                                Friend
+                                                {targetLabel}
                                             </h3>
-                                            <p className="text-lg">{assessment.friendName}</p>
+                                            <p className="text-lg">{targetName}</p>
                                         </div>
                                         {assessment.notes && (
                                             <div>
