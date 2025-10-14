@@ -14,7 +14,7 @@ import { useAssessmentStore } from '@/lib/store';
 import { useHistoryStore } from '@/lib/history-store';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { LottieAnimation } from '@/components/LottieAnimation';
 import GEOHead from '@/components/GEOHead';
 import { getAssessmentConfig } from '@/lib/assessments/registry';
@@ -118,7 +118,6 @@ export default function DynamicAssessmentPage() {
         questions,
         currentQuestionIndex,
         answers,
-        assessmentType: currentType,
         initializeAssessment,
         setAnswer,
         nextQuestion,

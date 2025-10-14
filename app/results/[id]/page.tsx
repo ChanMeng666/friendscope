@@ -225,7 +225,7 @@ export default function DetailedResultPage() {
     const params = useParams()
     const router = useRouter()
     const { toast } = useToast()
-    const { getAssessment, assessments } = useHistoryStore()
+    const { getAssessment } = useHistoryStore()
     const [assessment, setAssessment] = useState<AssessmentResult | undefined>()
     const [config, setConfig] = useState<AssessmentConfig | undefined>()
 
@@ -569,7 +569,7 @@ export default function DetailedResultPage() {
 
                 {/* Detailed Analysis Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {Object.entries(assessment.categoryScores).map(([category, score], index) => (
+                    {Object.entries(assessment.categoryScores).map(([category, score]) => (
                         <AnalysisCard
                             key={category}
                             category={category}

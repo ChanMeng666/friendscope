@@ -16,7 +16,7 @@ interface AssessmentState {
     resetAssessment: () => void;
 }
 
-export const useAssessmentStore = create<AssessmentState>((set, get) => ({
+export const useAssessmentStore = create<AssessmentState>((set) => ({
     assessmentType: null,
     questions: [],
     currentQuestionIndex: 0,

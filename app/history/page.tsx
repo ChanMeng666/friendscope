@@ -187,19 +187,20 @@ export default function HistoryPage() {
         .map((assessment) => ({
             date: format(new Date(assessment.date), 'MMM d'),
             score: Math.round(assessment.overallScore),
-            friend: assessment.friendName
+            friend: assessment.targetName || assessment.friendName || 'Unknown'
         }))
 
     // Calculate average scores by friend
     const averagesByFriend = assessments.reduce((acc, assessment) => {
-        if (!acc[assessment.friendName]) {
-            acc[assessment.friendName] = {
+        const name = assessment.targetName || assessment.friendName || 'Unknown';
+        if (!acc[name]) {
+            acc[name] = {
                 total: 0,
                 count: 0
             }
         }
-        acc[assessment.friendName].total += assessment.overallScore
-        acc[assessment.friendName].count += 1
+        acc[name].total += assessment.overallScore
+        acc[name].count += 1
         return acc
     }, {} as Record<string, { total: number; count: number }>)
 
@@ -344,13 +345,13 @@ export default function HistoryPage() {
                     </Card>
                     <Card className="bg-white/50 backdrop-blur-sm border-none">
                         <CardHeader className="pb-2">
-                            <CardTitle>Friends Assessed</CardTitle>
+                            <CardTitle>People Assessed</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="text-3xl font-bold">
-                                {new Set(assessments.map(a => a.friendName)).size}
+                                {new Set(assessments.map(a => a.targetName || a.friendName)).size}
                             </div>
-                            <p className="text-muted-foreground">unique friends</p>
+                            <p className="text-muted-foreground">unique people</p>
                         </CardContent>
                     </Card>
                 </div>
@@ -525,7 +526,7 @@ export default function HistoryPage() {
                                                 <TableCell>
                                                     {format(new Date(assessment.date), 'PPP')}
                                                 </TableCell>
-                                                <TableCell>{assessment.friendName}</TableCell>
+                                                <TableCell>{assessment.targetName || assessment.friendName}</TableCell>
                                                 <TableCell>
                                                     <ScoreIndicator score={assessment.overallScore} />
                                                 </TableCell>

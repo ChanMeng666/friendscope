@@ -170,10 +170,10 @@ export function BarMetric({ data, title, description }: MetricProps) {
                                     radius={[4, 4, 0, 0]}
                                     animationBegin={0}
                                     animationDuration={1500}
-                                    onMouseEnter={(data: BarEventPayload) => {
+                                    onMouseEnter={(_data: BarEventPayload) => {
                                         // hover 效果处理
                                     }}
-                                    onClick={(data: BarEventPayload) => {
+                                    onClick={(_data: BarEventPayload) => {
                                         // 点击效果处理
                                     }}
                                 />

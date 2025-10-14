@@ -70,9 +70,10 @@ export const useHistoryStore = create<HistoryState>()(
         {
             name: 'friendship-assessment-history',
             // 数据迁移：为旧数据添加默认的 assessmentType
-            migrate: (persistedState: any, version: number) => {
-                if (persistedState && persistedState.assessments) {
-                    persistedState.assessments = persistedState.assessments.map((assessment: any) => {
+            migrate: (persistedState: unknown, _version: number) => {
+                if (persistedState && typeof persistedState === 'object' && 'assessments' in persistedState) {
+                    const state = persistedState as { assessments: AssessmentResult[] };
+                    state.assessments = state.assessments.map((assessment: AssessmentResult) => {
                         // 如果没有 assessmentType，默认设置为 'friendship'
                         if (!assessment.assessmentType) {
                             return {
