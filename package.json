@@ -28,7 +28,7 @@
     "jspdf": "^2.5.2",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.454.0",
-    "next": "15.0.5",
+    "next": "15.0.7",
     "react": "^18.2.0",
     "react-apexcharts": "^1.5.0",
     "react-dom": "^18.2.0",
