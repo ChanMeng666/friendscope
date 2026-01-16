@@ -21,12 +21,52 @@ interface GEOMetrics {
   }[];
 }
 
+// Data retention configuration
+const MAX_METRICS_AGE_DAYS = 30;
+const MAX_REFERRALS = 1000;
+const MAX_COMPLETIONS = 500;
+const MAX_QUERIES = 200;
+
 class GEOAnalytics {
   private metrics: GEOMetrics;
   private storageKey = 'friendscope-geo-metrics';
 
   constructor() {
     this.metrics = this.loadMetrics();
+    this.cleanupOldData();
+  }
+
+  /**
+   * Clean up old data to prevent unbounded growth
+   */
+  private cleanupOldData(): void {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - MAX_METRICS_AGE_DAYS);
+    const cutoffTime = cutoffDate.getTime();
+
+    // Filter by date
+    this.metrics.aiReferrals = this.metrics.aiReferrals.filter(r =>
+      new Date(r.timestamp).getTime() > cutoffTime
+    );
+    this.metrics.assessmentCompletions = this.metrics.assessmentCompletions.filter(c =>
+      new Date(c.timestamp).getTime() > cutoffTime
+    );
+    this.metrics.queryPerformance = this.metrics.queryPerformance.filter(q =>
+      new Date(q.timestamp).getTime() > cutoffTime
+    );
+
+    // Enforce maximum counts (keep most recent)
+    if (this.metrics.aiReferrals.length > MAX_REFERRALS) {
+      this.metrics.aiReferrals = this.metrics.aiReferrals.slice(-MAX_REFERRALS);
+    }
+    if (this.metrics.assessmentCompletions.length > MAX_COMPLETIONS) {
+      this.metrics.assessmentCompletions = this.metrics.assessmentCompletions.slice(-MAX_COMPLETIONS);
+    }
+    if (this.metrics.queryPerformance.length > MAX_QUERIES) {
+      this.metrics.queryPerformance = this.metrics.queryPerformance.slice(-MAX_QUERIES);
+    }
+
+    this.saveMetrics();
   }
 
   private loadMetrics(): GEOMetrics {

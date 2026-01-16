@@ -1,17 +1,5 @@
 import { Question } from '../types';
-
-/**
- * 标准化的7点李克特量表选项
- */
-const standardOptions = [
-    "Strongly Agree",
-    "Agree",
-    "Somewhat Agree",
-    "Neutral",
-    "Somewhat Disagree",
-    "Disagree",
-    "Strongly Disagree"
-];
+import { STANDARD_OPTIONS } from '../constants';
 
 /**
  * 恋爱关系评测问题列表
@@ -22,14 +10,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 1,
         text: "I feel emotionally safe sharing my deepest thoughts and feelings with my partner.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Emotional Intimacy",
         weight: 1.5
     },
     {
         id: 2,
         text: "My partner understands and validates my emotions, even when we disagree.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Emotional Intimacy",
         weight: 1.5
     },
@@ -38,14 +26,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 3,
         text: "I completely trust my partner and feel secure in our relationship.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Trust & Honesty",
         weight: 1.5
     },
     {
         id: 4,
         text: "My partner is honest with me, even about difficult topics, and I never feel deceived.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Trust & Honesty",
         weight: 1.5
     },
@@ -54,14 +42,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 5,
         text: "We communicate openly about our needs, desires, and concerns without fear of judgment.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Communication",
         weight: 1.3
     },
     {
         id: 6,
         text: "My partner actively listens to me and makes an effort to understand my perspective.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Communication",
         weight: 1.3
     },
@@ -70,14 +58,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 7,
         text: "I feel satisfied with the level of physical affection and intimacy in our relationship.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Physical Intimacy",
         weight: 1.0
     },
     {
         id: 8,
         text: "My partner respects my physical boundaries and we're both comfortable discussing intimacy.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Physical Intimacy",
         weight: 1.0
     },
@@ -86,14 +74,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 9,
         text: "When we argue, we work towards resolution rather than trying to 'win' the argument.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Conflict Resolution",
         weight: 1.2
     },
     {
         id: 10,
         text: "After conflicts, we're able to repair our connection and move forward stronger.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Conflict Resolution",
         weight: 1.2
     },
@@ -102,14 +90,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 11,
         text: "Our core values and life goals are aligned and compatible.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Values & Goals",
         weight: 1.4
     },
     {
         id: 12,
         text: "We support each other's individual goals while working towards shared future aspirations.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Values & Goals",
         weight: 1.4
     },
@@ -118,14 +106,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 13,
         text: "My partner respects my need for personal time and individual interests outside our relationship.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Personal Space",
         weight: 1.2
     },
     {
         id: 14,
         text: "We maintain a healthy balance between togetherness and independence.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Personal Space",
         weight: 1.2
     },
@@ -134,14 +122,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 15,
         text: "My partner consistently supports my personal growth and celebrates my achievements.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Mutual Support",
         weight: 1.3
     },
     {
         id: 16,
         text: "I feel like my partner is my biggest cheerleader during both successes and challenges.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Mutual Support",
         weight: 1.3
     },
@@ -150,14 +138,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 17,
         text: "I feel secure in my partner's commitment to our relationship and our future together.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Commitment & Future",
         weight: 1.4
     },
     {
         id: 18,
         text: "We have meaningful conversations about our future and make plans together.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Commitment & Future",
         weight: 1.4
     },
@@ -166,14 +154,14 @@ export const romanticQuestions: Question[] = [
     {
         id: 19,
         text: "We maintain romance and excitement in our relationship beyond the initial honeymoon phase.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Passion & Romance",
         weight: 1.0
     },
     {
         id: 20,
         text: "My partner makes me feel desired, appreciated, and special in our relationship.",
-        options: standardOptions,
+        options: STANDARD_OPTIONS,
         category: "Passion & Romance",
         weight: 1.0
     }

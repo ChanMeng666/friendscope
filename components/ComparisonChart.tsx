@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo, memo } from 'react'
 import dynamic from 'next/dynamic'
 import { format } from 'date-fns'
+import { useIsMobile, useHydrated } from '@/hooks'
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
@@ -14,24 +15,21 @@ interface ComparisonChartProps {
     }>
 }
 
-export function ComparisonChart({ data }: ComparisonChartProps) {
-    const [mounted, setMounted] = useState(false)
-    const [isMobile, setIsMobile] = useState(false)
+function ComparisonChartComponent({ data }: ComparisonChartProps) {
+    const mounted = useHydrated()
+    const isMobile = useIsMobile()
 
-    useEffect(() => {
-        setMounted(true)
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768)
-        }
-        checkMobile()
-        window.addEventListener('resize', checkMobile)
-        return () => window.removeEventListener('resize', checkMobile)
-    }, [])
+    const categories = useMemo(
+        () => Object.keys(data[0]?.categoryScores || {}),
+        [data]
+    )
 
-    const categories = Object.keys(data[0]?.categoryScores || {})
-    const dates = data.map(item => format(new Date(item.date), isMobile ? 'MMM d' : 'MMM d, yyyy'))
+    const dates = useMemo(
+        () => data.map(item => format(new Date(item.date), isMobile ? 'MMM d' : 'MMM d, yyyy')),
+        [data, isMobile]
+    )
 
-    const series = [
+    const series = useMemo(() => [
         {
             name: 'Overall Score',
             data: data.map(item => Math.round(item.overallScore))
@@ -40,9 +38,9 @@ export function ComparisonChart({ data }: ComparisonChartProps) {
             name: category,
             data: data.map(item => Math.round(item.categoryScores[category]))
         }))
-    ]
+    ], [data, categories])
 
-    const options = {
+    const options = useMemo(() => ({
         chart: {
             type: 'line' as const,
             toolbar: {
@@ -109,7 +107,7 @@ export function ComparisonChart({ data }: ComparisonChartProps) {
                 left: isMobile ? 5 : 15
             }
         }
-    }
+    }), [isMobile, dates, series])
 
     if (!mounted) return (
         <div className="h-[250px] sm:h-[300px] md:h-[400px] w-full bg-gray-100 animate-pulse rounded-lg" />
@@ -132,3 +130,6 @@ export function ComparisonChart({ data }: ComparisonChartProps) {
         </div>
     )
 }
+
+// Memoized export for performance optimization
+export const ComparisonChart = memo(ComparisonChartComponent)

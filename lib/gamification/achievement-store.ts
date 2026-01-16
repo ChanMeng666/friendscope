@@ -118,16 +118,16 @@ export const useAchievementStore = create<AchievementState>()(
             /**
              * Check achievements and unlock new ones
              * Returns array of newly unlocked achievement IDs
+             * Optimized with Set for O(1) lookup
              */
             checkAndUnlockAchievements: (assessments: AssessmentResult[]) => {
                 const stats = calculateStats(assessments);
                 const currentUnlocked = get().unlockedAchievements;
+                const unlockedIds = new Set(currentUnlocked.map(u => u.id));
                 const newlyUnlocked: string[] = [];
 
                 ACHIEVEMENTS.forEach(achievement => {
-                    const alreadyUnlocked = currentUnlocked.some(u => u.id === achievement.id);
-
-                    if (!alreadyUnlocked && achievement.condition(stats)) {
+                    if (!unlockedIds.has(achievement.id) && achievement.condition(stats)) {
                         newlyUnlocked.push(achievement.id);
                     }
                 });
@@ -149,28 +149,28 @@ export const useAchievementStore = create<AchievementState>()(
 
             /**
              * Get all unlocked achievements with full details
+             * Optimized with Set for O(n+m) lookup instead of O(n*m)
              */
             getUnlockedAchievements: () => {
                 const unlocked = get().unlockedAchievements;
-                return ACHIEVEMENTS.filter(a =>
-                    unlocked.some(u => u.id === a.id)
-                ).map(achievement => {
-                    const unlockData = unlocked.find(u => u.id === achievement.id);
-                    return {
+                const unlockedIds = new Set(unlocked.map(u => u.id));
+                const unlockedMap = new Map(unlocked.map(u => [u.id, u]));
+
+                return ACHIEVEMENTS
+                    .filter(a => unlockedIds.has(a.id))
+                    .map(achievement => ({
                         ...achievement,
-                        unlockedAt: unlockData?.unlockedAt
-                    };
-                });
+                        unlockedAt: unlockedMap.get(achievement.id)?.unlockedAt
+                    }));
             },
 
             /**
              * Get all locked achievements
+             * Optimized with Set for O(n+m) lookup instead of O(n*m)
              */
             getLockedAchievements: () => {
-                const unlocked = get().unlockedAchievements;
-                return ACHIEVEMENTS.filter(a =>
-                    !unlocked.some(u => u.id === a.id)
-                );
+                const unlockedIds = new Set(get().unlockedAchievements.map(u => u.id));
+                return ACHIEVEMENTS.filter(a => !unlockedIds.has(a.id));
             },
 
             /**

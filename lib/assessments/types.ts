@@ -6,7 +6,7 @@ import { LucideIcon } from 'lucide-react';
 export interface Question {
     id: number;
     text: string;
-    options: string[];
+    options: readonly string[] | string[];
     category: string;
     weight: number;
 }

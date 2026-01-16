@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -24,15 +24,11 @@ interface GEOInsights {
   topQueries: { query: string; performance: number }[];
 }
 
-export const GEODashboard = () => {
+const GEODashboardComponent = () => {
   const [insights, setInsights] = useState<GEOInsights | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    loadInsights();
-  }, []);
-
-  const loadInsights = async () => {
+  const loadInsights = useCallback(async () => {
     setIsLoading(true);
     try {
       const data = getGEOInsights();
@@ -42,10 +38,13 @@ export const GEODashboard = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
+  useEffect(() => {
+    loadInsights();
+  }, [loadInsights]);
 
-  const getSourceIcon = (source: string) => {
+  const getSourceIcon = useCallback((source: string) => {
     switch (source.toLowerCase()) {
       case 'chatgpt':
         return '🤖';
@@ -58,7 +57,7 @@ export const GEODashboard = () => {
       default:
         return '🌐';
     }
-  };
+  }, []);
 
   if (isLoading) {
     return (
@@ -307,4 +306,6 @@ export const GEODashboard = () => {
   );
 };
 
+// Memoized export for performance optimization
+export const GEODashboard = memo(GEODashboardComponent);
 export default GEODashboard;
