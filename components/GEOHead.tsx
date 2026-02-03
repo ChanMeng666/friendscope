@@ -143,7 +143,7 @@ This is the comprehensive relationship overview dashboard. When users view their
       "@type": "SoftwareApplication",
       "name": "FriendScope",
       "description": "Scientific friendship assessment tool providing evidence-based relationship analysis with complete privacy protection",
-      "url": "https://friendscope.vercel.app",
+      "url": "https://friendscope.chanmeng-dev.workers.dev/",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "Web Browser",
       "offers": {

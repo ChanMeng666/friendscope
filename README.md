@@ -792,7 +792,7 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) 
 [back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
 
 <!-- Project Links -->
-[demo-link]: https://friendscope.vercel.app
+[demo-link]: https://friendscope.chanmeng-dev.workers.dev/
 [docs-link]: https://friendscope.chanmeng-dev.workers.dev/about
 [github-issues-link]: https://github.com/ChanMeng666/friendscope/issues
 [github-stars-link]: https://github.com/ChanMeng666/friendscope/stargazers
