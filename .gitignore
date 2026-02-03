@@ -31,10 +31,16 @@ yarn-error.log*
 
 # env files (can opt-in for commiting if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
 
+# cloudflare
+.open-next/
+.wrangler/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.claude/settings.local.json

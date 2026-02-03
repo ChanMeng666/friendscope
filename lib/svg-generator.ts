@@ -11,6 +11,8 @@ const escapeXml = (unsafe: string) => {
     });
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://friendscope.chanmeng-dev.workers.dev'
+
 export const generateResultSVG = (
     friendName: string,
     overallScore: number,
@@ -77,7 +79,7 @@ export const generateResultSVG = (
                 Visit us at FriendScope - Evaluate Your Friendships
             </text>
             <text x="${width/2}" y="70" text-anchor="middle" font-size="14" fill="#3b82f6">
-                https://friendscope.vercel.app
+                ${siteUrl}
             </text>
         </g>
     </svg>`;

@@ -78,7 +78,7 @@ One-click **FREE** deployment for analyzing and improving your friendships.
 
 <div align="center">
 
-[![FriendScope Demo](https://github.com/user-attachments/assets/a034cb2a-2a8b-4901-b2b7-5c31a9ae32e1)](https://friendscope.vercel.app/)
+[![FriendScope Demo](https://github.com/user-attachments/assets/a034cb2a-2a8b-4901-b2b7-5c31a9ae32e1)](https://friendscope.chanmeng-dev.workers.dev/)
 
 *Click to experience the live application*
 
@@ -594,7 +594,7 @@ FriendScope integrates with leading platforms for enhanced functionality:
 | **Sharing** | Native Web Share API | ✅ Active | Results sharing |
 | **Export** | PDF Generation (jsPDF) | ✅ Active | Report generation |
 
-> 📊 Total integrations: [<kbd>**Privacy-First Architecture**</kbd>](https://friendscope.vercel.app/) - No external tracking or data collection
+> 📊 Total integrations: [<kbd>**Privacy-First Architecture**</kbd>](https://friendscope.chanmeng-dev.workers.dev/) - No external tracking or data collection
 
 ## 📦 Ecosystem
 
@@ -760,7 +760,7 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) 
 - <img src="https://cdn.simpleicons.org/internetexplorer/0078D4" width="16" height="16"> Portfolio: [chanmeng.live](https://2d-portfolio-eta.vercel.app/)
 
 **Project Links:**
-- 🌟 **Live Demo**: [FriendScope App](https://friendscope.vercel.app/)
+- 🌟 **Live Demo**: [FriendScope App](https://friendscope.chanmeng-dev.workers.dev/)
 - 📖 **Documentation**: [Coming Soon]
 - 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ChanMeng666/friendscope/issues)
 - 💡 **Feature Requests**: [GitHub Discussions](https://github.com/ChanMeng666/friendscope/discussions)
@@ -793,7 +793,7 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) 
 
 <!-- Project Links -->
 [demo-link]: https://friendscope.vercel.app
-[docs-link]: https://friendscope.vercel.app/about
+[docs-link]: https://friendscope.chanmeng-dev.workers.dev/about
 [github-issues-link]: https://github.com/ChanMeng666/friendscope/issues
 [github-stars-link]: https://github.com/ChanMeng666/friendscope/stargazers
 [github-forks-link]: https://github.com/ChanMeng666/friendscope/forks

@@ -4,12 +4,12 @@
     
     <!-- Homepage -->
     <url>
-        <loc>https://friendscope.vercel.app/</loc>
+        <loc>https://friendscope.chanmeng-dev.workers.dev/</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://friendscope.vercel.app/friendscope-logo.png</image:loc>
+            <image:loc>https://friendscope.chanmeng-dev.workers.dev/friendscope-logo.png</image:loc>
             <image:title>FriendScope - Scientific Friendship Assessment Tool</image:title>
             <image:caption>Evidence-based friendship evaluation platform with complete privacy protection</image:caption>
         </image:image>
@@ -17,7 +17,7 @@
     
     <!-- Assessment Page -->
     <url>
-        <loc>https://friendscope.vercel.app/assess</loc>
+        <loc>https://friendscope.chanmeng-dev.workers.dev/assess</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -25,7 +25,7 @@
     
     <!-- Results Page -->
     <url>
-        <loc>https://friendscope.vercel.app/results</loc>
+        <loc>https://friendscope.chanmeng-dev.workers.dev/results</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -33,7 +33,7 @@
     
     <!-- About Page -->
     <url>
-        <loc>https://friendscope.vercel.app/about</loc>
+        <loc>https://friendscope.chanmeng-dev.workers.dev/about</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -41,7 +41,7 @@
     
     <!-- Resources Page -->
     <url>
-        <loc>https://friendscope.vercel.app/resources</loc>
+        <loc>https://friendscope.chanmeng-dev.workers.dev/resources</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -49,7 +49,7 @@
     
     <!-- History Page -->
     <url>
-        <loc>https://friendscope.vercel.app/history</loc>
+        <loc>https://friendscope.chanmeng-dev.workers.dev/history</loc>
         <lastmod>2024-12-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

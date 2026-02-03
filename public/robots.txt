@@ -41,4 +41,4 @@ Disallow: /_next/
 Disallow: /node_modules/
 
 # Sitemap Location
-Sitemap: https://friendscope.vercel.app/sitemap.xml
+Sitemap: https://friendscope.chanmeng-dev.workers.dev/sitemap.xml
