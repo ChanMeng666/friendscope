@@ -1,0 +1,74 @@
+{
+  "project": "friendscope",
+  "baseUrl": "https://friendscope.chanmeng-dev.workers.dev",
+  "outDir": "docs/showcase",
+
+  "viewports": {
+    "desktop": { "width": 1280, "height": 800, "deviceScaleFactor": 2 },
+    "mobile":  { "width": 390,  "height": 844, "deviceScaleFactor": 3, "isMobile": true }
+  },
+
+  "reducedMotion": "reduce",
+
+  "pages": [
+    {
+      "label": "hero",
+      "url": "/",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 2000 }
+      ]
+    },
+    {
+      "label": "features",
+      "url": "/",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 2000 },
+        { "action": "scroll", "by": 650 },
+        { "action": "wait", "ms": 800 }
+      ]
+    },
+    {
+      "label": "assessment",
+      "url": "/assess",
+      "viewport": "desktop",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 2000 }
+      ]
+    },
+    {
+      "label": "mobile-hero",
+      "url": "/",
+      "viewport": "mobile",
+      "fullPage": false,
+      "before": [
+        { "action": "wait", "ms": 2000 }
+      ]
+    }
+  ],
+
+  "demo": {
+    "size": { "width": 1280, "height": 720 },
+    "stepPauseMs": 700,
+    "steps": [
+      { "action": "goto", "url": "/", "timeoutMs": 15000 },
+      { "action": "wait", "ms": 2000 },
+      { "action": "scroll", "by": 400 },
+      { "action": "wait", "ms": 900 },
+      { "action": "scroll", "by": 400 },
+      { "action": "wait", "ms": 900 },
+      { "action": "scroll", "by": -800 },
+      { "action": "wait", "ms": 800 },
+      { "action": "goto", "url": "/assess", "timeoutMs": 15000 },
+      { "action": "wait", "ms": 2000 },
+      { "action": "scroll", "by": 400 },
+      { "action": "wait", "ms": 900 },
+      { "action": "scroll", "by": 400 },
+      { "action": "wait", "ms": 900 }
+    ]
+  }
+}
